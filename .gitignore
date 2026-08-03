@@ -18,3 +18,4 @@ __pycache__/
 # OS/editor cruft
 .DS_Store
 .vscode/
+dvc_plots/
