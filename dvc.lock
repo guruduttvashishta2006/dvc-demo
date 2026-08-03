@@ -5,8 +5,8 @@ stages:
     deps:
     - path: data/house_prices.csv
       hash: md5
-      md5: 56ba08aaf8076fc96ffc776120cb661b
-      size: 28737
+      md5: d4f14ac6210c504183878553bf39b1e6
+      size: 28943
     - path: preprocess.py
       hash: md5
       md5: 1b3b2e102d4d58cedeb1b57b61858aea
@@ -18,19 +18,19 @@ stages:
     outs:
     - path: data/test.csv
       hash: md5
-      md5: 2e0b7f8e0cb22dbe27bfebb2c6e1488a
-      size: 5813
+      md5: db92e021fbcfe7a843e8eb6ef6d6907d
+      size: 5864
     - path: data/train.csv
       hash: md5
-      md5: 9fcaae9acf0154ce55a834360fa8c525
-      size: 22997
+      md5: 755af2f48f6f82ea9c759be4aec44a0f
+      size: 23152
   train:
     cmd: python train.py
     deps:
     - path: data/train.csv
       hash: md5
-      md5: 9fcaae9acf0154ce55a834360fa8c525
-      size: 22997
+      md5: 755af2f48f6f82ea9c759be4aec44a0f
+      size: 23152
     - path: train.py
       hash: md5
       md5: 6ea6e17676e8aacb341a8e610d0ad8e0
@@ -43,29 +43,29 @@ stages:
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 768bf36fc4b824d82badaa40161eec0e
-      size: 6081787
+      md5: f1fb3fc959e90ec2dd60c802bd842794
+      size: 4212811
   evaluate:
     cmd: python evaluate.py
     deps:
     - path: data/test.csv
       hash: md5
-      md5: 2e0b7f8e0cb22dbe27bfebb2c6e1488a
-      size: 5813
+      md5: db92e021fbcfe7a843e8eb6ef6d6907d
+      size: 5864
     - path: evaluate.py
       hash: md5
       md5: 2d2ded959f7932d246b9bf6d1d1ff643
       size: 1121
     - path: models/model.pkl
       hash: md5
-      md5: 768bf36fc4b824d82badaa40161eec0e
-      size: 6081787
+      md5: f1fb3fc959e90ec2dd60c802bd842794
+      size: 4212811
     outs:
     - path: metrics/metrics.json
       hash: md5
-      md5: 260c6389fbc055836abd2038240748a6
+      md5: e9761923cc2081564c07383b8425f1d9
       size: 88
     - path: metrics/predictions.csv
       hash: md5
-      md5: c8aca7f10e32cc5cd7416ef07e40cba6
-      size: 5038
+      md5: 92f29378fc7d901cf9326be374f8f1e8
+      size: 5079
