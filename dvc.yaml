@@ -1,0 +1,39 @@
+stages:
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+      - preprocess.py
+      - data/house_prices.csv
+    params:
+      - preprocess.test_size
+      - preprocess.random_state
+    outs:
+      - data/train.csv
+      - data/test.csv
+
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - data/train.csv
+    params:
+      - train.n_estimators
+      - train.max_depth
+      - train.random_state
+    outs:
+      - models/model.pkl
+
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+      - evaluate.py
+      - models/model.pkl
+      - data/test.csv
+    metrics:
+      - metrics/metrics.json:
+          cache: false
+    plots:
+      - metrics/predictions.csv:
+          x: actual
+          y: predicted
+          cache: false
